@@ -11,7 +11,7 @@ export const MainView = () => {
     Director: "Quentin Tarantino",
     genre: "Gangster",
     year: "1992",
-    image: "./img/reservoirdogs.jiff"
+    image: "./img/reservoirdogs.jfif"
 },
 {
 
@@ -21,7 +21,7 @@ export const MainView = () => {
     Director: "Stanley Kubrick",
     genre: "Science Fiction",
     Year: "1968",
-    image: "./img/2001spaceodyssey.jiff"
+    image: "./img/2001spaceodyssey.jfif"
 },
 {
     id: 3,
@@ -30,7 +30,7 @@ export const MainView = () => {
     Director: "Francis Ford Coppola",
     genre: "Gangster",
     Year: "1988",
-    image: "./img/Thegodfather.jiff"
+    image: "./img/Thegodfather.jfif"
 }
 ]);
 
