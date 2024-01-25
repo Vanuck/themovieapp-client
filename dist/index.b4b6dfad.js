@@ -27327,7 +27327,7 @@ const MainView = ()=>{
             Director: "Quentin Tarantino",
             genre: "Gangster",
             year: "1992",
-            image: "./img/reservoirdogs.jiff"
+            image: "./img/reservoirdogs.jfif"
         },
         {
             id: 2,
@@ -27336,7 +27336,7 @@ const MainView = ()=>{
             Director: "Stanley Kubrick",
             genre: "Science Fiction",
             Year: "1968",
-            image: "./img/2001spaceodyssey.jiff"
+            image: "./img/2001spaceodyssey.jfif"
         },
         {
             id: 3,
@@ -27345,7 +27345,7 @@ const MainView = ()=>{
             Director: "Francis Ford Coppola",
             genre: "Gangster",
             Year: "1988",
-            image: "./img/Thegodfather.jiff"
+            image: "./img/Thegodfather.jfif"
         }
     ]);
     const [selectedMovie, setselectedMovie] = (0, _react.useState)(null);
@@ -27381,7 +27381,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "autwUf8xPK6b292mohq/fkwFMCc=");
+_s(MainView, "b3SZ7GQP0uqp/gLClvq7rLoP+BY=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
