@@ -2951,26 +2951,26 @@ var _client = require("react-dom/client");
 var _mainView = require("./components/main-view/main-view");
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
-// Main component (will eventually use all the others)
-const themovieapp = ()=>{
+// Main component 
+const TheMovieApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
         lineNumber: 9,
         columnNumber: 12
     }, undefined);
 };
-_c = themovieapp;
+_c = TheMovieApp;
 // Finds the root of your app
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("themovieapp", {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(TheMovieApp, {}, void 0, false, {
     fileName: "src/index.jsx",
     lineNumber: 17,
     columnNumber: 13
 }, undefined));
 var _c;
-$RefreshReg$(_c, "themovieapp");
+$RefreshReg$(_c, "TheMovieApp");
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
@@ -27322,27 +27322,27 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([
         {
             id: 1,
-            Title: "Reservoir Dogs",
-            Description: "Six criminals having pseudonyms, and each strangers to one another, are hired to carry out a robbery. The heist is ambushed by police and the gang are forced to shoot their way out. At their warehouse rendezvous, the survivors, realising that they were set up, try to find the traitor in their midst.",
-            Director: "Quentin Tarantino",
+            title: "Reservoir Dogs",
+            description: "Six criminals having pseudonyms, and each strangers to one another, are hired to carry out a robbery. The heist is ambushed by police and the gang are forced to shoot their way out. At their warehouse rendezvous, the survivors, realising that they were set up, try to find the traitor in their midst.",
+            director: "Quentin Tarantino",
             genre: "Gangster",
             year: "1992",
             image: "./img/reservoirdogs.jfif"
         },
         {
             id: 2,
-            Title: "2001:A Space Odyssey",
-            Description: "When Dr. Dave Bowman and other astronauts are sent on a mysterious mission, their ships computer system, HAL, begins to display increasingly strange behavior, leading up to a tense showdown between man and machine that results in a mind-bending trek through space and time.",
-            Director: "Stanley Kubrick",
+            title: "2001:A Space Odyssey",
+            description: "When Dr. Dave Bowman and other astronauts are sent on a mysterious mission, their ships computer system, HAL, begins to display increasingly strange behavior, leading up to a tense showdown between man and machine that results in a mind-bending trek through space and time.",
+            director: "Stanley Kubrick",
             genre: "Science Fiction",
             Year: "1968",
             image: "./img/2001spaceodyssey.jfif"
         },
         {
             id: 3,
-            Title: "The Godfather",
-            Description: "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
-            Director: "Francis Ford Coppola",
+            title: "The Godfather",
+            description: "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
+            director: "Francis Ford Coppola",
             genre: "Gangster",
             Year: "1988",
             image: "./img/Thegodfather.jfif"
@@ -27381,7 +27381,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "b3SZ7GQP0uqp/gLClvq7rLoP+BY=");
+_s(MainView, "T4tuwGRFLeZr5Hod2971sZ15j04=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

@@ -5,7 +5,7 @@ import { MainView } from "./components/main-view/main-view";
 import "./index.scss";
 
 // Main component 
-const themovieapp = () => {
+const TheMovieApp = () => {
     return <MainView />;
 };
 
@@ -14,4 +14,4 @@ const container = document.querySelector("#root");
 const root = createRoot(container);
 
 // Tells React to render your app in the root DOM element
-root.render(<themovieapp />);
+root.render(<TheMovieApp />);
