@@ -1,4 +1,9 @@
-$color: rgb(61, 46, 173);
+$primary: DarkBlue;
+$body-bg: Fuchsia;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+$color: ForestGreen;
 
 .themovieapp {
   color: $color;
