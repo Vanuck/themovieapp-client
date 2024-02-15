@@ -2,25 +2,33 @@ import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 
 export const MovieCard = ({ movie, onMovieClick }) => {
-    return (
-        <Card className="h-100 shadow-lg">
-        <Card.Img variant="top" src={movie.image} />
-        <Card.Body>
-          <Card.Title>{movie.title}</Card.Title>
-          <Card.Text>{movie.director.Name}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant="link">
-            Open
-          </Button>
-        </Card.Body>
-      </Card> 
-    );
+  return (
+    <Card
+      className="movie-card h-100"
+      onClick={() => {
+        onMovieClick(movie);
+      }}
+    >
+      <Card.Img variant="top" src={movie.image} alt={movie.title} />
+      <Card.Body>
+        <Card.Title className="movie.title">
+          <span className="titleText">{movie.title}</span>
+        </Card.Title>
+        <Card.Text>{movie.director.Name}</Card.Text>
+      </Card.Body>
+      <Button onClick={() => onMovieClick(movie)} variant="link">
+        Open
+      </Button>
+    </Card>
+  );
 };
 
 MovieCard.propTypes = {
-    movie: PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,        
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+  movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired,
 };

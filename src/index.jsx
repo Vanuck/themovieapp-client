@@ -1,17 +1,20 @@
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import { MainView } from "./components/main-view/main-view";
-import Container from 'react-bootstrap/Container';
-
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
 
-// Main component 
+import { Container } from "react-bootstrap";
+//import Container from "react-bootstrap/Container";
+
+//import "bootstrap/dist/css/bootstrap.min.css";
+
+// Main component
 const TheMovieApp = () => {
-    return (
-      <Container style={{border: "1px solid red"}}>
-          <MainView />
-        </Container>
-      );
+  return (
+    <Container style={{ border: "4px solid blue" }}>
+      <MainView />
+    </Container>
+  );
 };
 
 // Finds the root of your app

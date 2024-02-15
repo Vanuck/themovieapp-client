@@ -1,10 +1,13 @@
-$primary: DarkBlue;
-$body-bg: Fuchsia;
+$primary: rgb(201, 13, 44);
+$body-bg: rgb(56, 143, 225);
+
+$body-color: rgb(230, 12, 63);
+
+.bg {
+    background-image: url("https://www.w3schools.com/w3css/img_lights.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+  }
 
 @import '~bootstrap/scss/bootstrap.scss';
-
-$color: ForestGreen;
-
-.themovieapp {
-  color: $color;
-}
