@@ -66,7 +66,7 @@ export const SignupView = () => {
                       onChange={(e) => setUsername(e.target.value)}
                       required
                       minLength="6"
-                      Placeholder="Enter a username with a minimum of 6 characters"
+                      placeholder="Enter a username with a minimum of 6 characters"
                     />
                   </Form.Group>
 
@@ -78,7 +78,7 @@ export const SignupView = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       minLength="6"
-                      Placeholder="Enter a password, must be a minimum of 6 characters"
+                      placeholder="Enter a password, must be a minimum of 6 characters"
                     />
                   </Form.Group>
 
@@ -89,7 +89,7 @@ export const SignupView = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      Placeholder="Enter your email"
+                      placeholder="Enter your email"
                     />
                   </Form.Group>
 
@@ -100,7 +100,7 @@ export const SignupView = () => {
                       value={birthday}
                       onChange={(e) => setBirthday(e.target.value)}
                       required
-                      Placeholder="Enter your birthdate"
+                      placeholder="Enter your birthdate"
                     />
                   </Form.Group>
                   <Button variant="primary" type="submit">

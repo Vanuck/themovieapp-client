@@ -2957,9 +2957,6 @@ var _reactBootstrap = require("react-bootstrap");
 // Main component
 const TheMovieApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-        style: {
-            border: "4px solid blue"
-        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
             lineNumber: 15,
@@ -30813,7 +30810,7 @@ const LoginView = ({ onLoggedIn })=>{
                                                     onChange: (e)=>setUsername(e.target.value),
                                                     required: true,
                                                     minLength: "6",
-                                                    Placeholder: "Enter a username"
+                                                    placeholder: "Enter a username"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
                                                     lineNumber: 56,
@@ -30841,7 +30838,7 @@ const LoginView = ({ onLoggedIn })=>{
                                                     onChange: (e)=>setPassword(e.target.value),
                                                     required: true,
                                                     minLength: "6",
-                                                    Placeholder: "Enter your password"
+                                                    placeholder: "Enter your password"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
                                                     lineNumber: 68,
@@ -31002,7 +30999,7 @@ const SignupView = ()=>{
                                                     onChange: (e)=>setUsername(e.target.value),
                                                     required: true,
                                                     minLength: "6",
-                                                    Placeholder: "Enter a username with a minimum of 6 characters"
+                                                    placeholder: "Enter a username with a minimum of 6 characters"
                                                 }, void 0, false, {
                                                     fileName: "src/components/signup-view/signup-view.jsx",
                                                     lineNumber: 63,
@@ -31030,7 +31027,7 @@ const SignupView = ()=>{
                                                     onChange: (e)=>setPassword(e.target.value),
                                                     required: true,
                                                     minLength: "6",
-                                                    Placeholder: "Enter a password, must be a minimum of 6 characters"
+                                                    placeholder: "Enter a password, must be a minimum of 6 characters"
                                                 }, void 0, false, {
                                                     fileName: "src/components/signup-view/signup-view.jsx",
                                                     lineNumber: 75,
@@ -31057,7 +31054,7 @@ const SignupView = ()=>{
                                                     value: email,
                                                     onChange: (e)=>setEmail(e.target.value),
                                                     required: true,
-                                                    Placeholder: "Enter your email"
+                                                    placeholder: "Enter your email"
                                                 }, void 0, false, {
                                                     fileName: "src/components/signup-view/signup-view.jsx",
                                                     lineNumber: 87,
@@ -31084,7 +31081,7 @@ const SignupView = ()=>{
                                                     value: birthday,
                                                     onChange: (e)=>setBirthday(e.target.value),
                                                     required: true,
-                                                    Placeholder: "Enter your birthdate"
+                                                    placeholder: "Enter your birthdate"
                                                 }, void 0, false, {
                                                     fileName: "src/components/signup-view/signup-view.jsx",
                                                     lineNumber: 98,

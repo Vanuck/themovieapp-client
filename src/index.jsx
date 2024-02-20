@@ -11,7 +11,7 @@ import { Container } from "react-bootstrap";
 // Main component
 const TheMovieApp = () => {
   return (
-    <Container style={{ border: "4px solid blue" }}>
+    <Container>
       <MainView />
     </Container>
   );
