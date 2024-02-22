@@ -1,1 +1,0 @@
-{"mappings":"AAEA","sources":["src/index.scss"],"sourcesContent":["$color: rgb(61, 46, 173);\r\n\r\n.themovieapp {\r\n  color: $color;\r\n}"],"names":[],"version":3,"file":"index.ce1d6491.css.map","sourceRoot":"/__parcel_source_root/"}
