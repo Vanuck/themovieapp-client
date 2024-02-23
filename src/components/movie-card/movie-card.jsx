@@ -11,7 +11,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     >
       <Card.Img variant="top" src={movie.image} alt={movie.Title} />
       <Card.Body>
-        <Card.Title className="movie.title">
+        <Card.Title className="movie.Title">
           <span className="titleText">{movie.Title}</span>
         </Card.Title>
         <Card.Text>{movie.director.Name}</Card.Text>
