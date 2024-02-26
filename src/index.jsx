@@ -4,11 +4,11 @@ import { MainView } from "./components/main-view/main-view";
 import "./index.scss";
 
 import { Container } from "react-bootstrap";
-//import Container from "react-bootstrap/Container";
+import Container from "react-bootstrap/Container";
 
-//import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// Main component
+//Main component
 const TheMovieApp = () => {
   return (
     <Container>

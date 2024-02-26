@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Container from "react-bootstrap/Container";
+import "./login-view.scss";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -43,6 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
+    // <div style={{ backgroundimage: `url(${ImgMovies})` }}>
     <Container>
       <Row>
         <Col>
@@ -85,5 +87,6 @@ export const LoginView = ({ onLoggedIn }) => {
         </Col>
       </Row>
     </Container>
+    // </div>
   );
 };

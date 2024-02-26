@@ -34,6 +34,7 @@ export const MainView = () => {
             Title: movie.Title,
             Image: movie.Image,
             Description: movie.Description,
+            Year: movie.Year,
             Genre: {
               Name: movie.Genre.Name,
             },
@@ -65,46 +66,43 @@ export const MainView = () => {
   }
 
   if (selectedMovie) {
-    <MovieView
-      movie={selectedMovie}
-      onBackClick={() => setselectedMovie(null)}
-    />;
-    if (movies.length === 0) {
-      return (
-        <Row className="justify-content-md-center">
-          <Col md={8}>
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={() => setselectedMovie(null)}
-            />
-            <br />
-            <div>Nothing to see here!</div>
-          </Col>
-        </Row>
-      );
-    }
+    return (
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setselectedMovie(null)}
+      />
+    );
+  }
+  if (movies.length === 0) {
     return (
       <Row className="justify-content-md-center">
-        {movies.map((movie) => (
-          <Col md={3} className="mb-5" key={movie._id}>
-            <MovieCard
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setselectedMovie(newSelectedMovie);
-              }}
-            />
-          </Col>
-        ))}
-        <Button
-          onClick={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-        >
-          Logout
-        </Button>
+        <Col md={8}>
+          <div>Nothing to see here!</div>
+        </Col>
       </Row>
     );
   }
+  return (
+    <Row className="justify-content-md-center">
+      {movies.map((movie) => (
+        <Col md={3} className="mb-5" key={movie._id}>
+          <MovieCard
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setselectedMovie(newSelectedMovie);
+            }}
+          />
+        </Col>
+      ))}
+      <Button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </Button>
+    </Row>
+  );
 };

@@ -9,12 +9,12 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onMovieClick(movie);
       }}
     >
-      <Card.Img variant="top" src={movie.image} alt={movie.Title} />
+      <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
       <Card.Body>
         <Card.Title className="movie.Title">
           <span className="titleText">{movie.Title}</span>
         </Card.Title>
-        <Card.Text>{movie.director.Name}</Card.Text>
+        <Card.Text>{movie.Director.Name}</Card.Text>
       </Card.Body>
       <Button onClick={() => onMovieClick(movie)} variant="link">
         Open
@@ -25,10 +25,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Image: PropTypes.string.isRequired,
+    Director: PropTypes.object.isRequired,
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired,
 };

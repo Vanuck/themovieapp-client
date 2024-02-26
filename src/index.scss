@@ -1,13 +1,13 @@
 $primary: rgb(11, 118, 47);
-$body-bg: rgb(56, 143, 225);
+$body-bg: rgb(244, 232, 8);
 
 $body-color: rgb(43, 13, 176);
 
-/*.bg {
-    background-image: url("../img/topsters2.png");
+.bg {
+    background-image: url("../img/Moviereel.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;    
-  }*/
+  }
 
 @import '~bootstrap/scss/bootstrap.scss';
