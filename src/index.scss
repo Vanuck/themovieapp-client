@@ -1,5 +1,13 @@
-$color: rgb(61, 46, 173);
+$primary: rgb(11, 118, 47);
+$body-bg: rgb(244, 232, 8);
 
-.themovieapp {
-  color: $color;
-}
+$body-color: rgb(43, 13, 176);
+
+.bg {
+    background-image: url("../img/Moviereel.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+  }
+
+@import '~bootstrap/scss/bootstrap.scss';
