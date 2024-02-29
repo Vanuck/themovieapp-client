@@ -56,8 +56,9 @@ export const SignupView = () => {
           <CardGroup>
             <Card>
               <Card.Body>
+                <br />
                 <Card.Title>Please Signup</Card.Title>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="mt-6">
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control

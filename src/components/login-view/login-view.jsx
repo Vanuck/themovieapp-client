@@ -44,15 +44,15 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    // <div style={{ backgroundimage: `url(${ImgMovies})` }}>
     <Container>
       <Row>
         <Col>
           <CardGroup>
             <Card>
               <Card.Body>
+                <br />
                 <Card.Title>Please Login</Card.Title>
-                <Form onSubmit={handleSubmit} className="mt-5">
+                <Form onSubmit={handleSubmit} className="mt-9">
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
@@ -87,6 +87,5 @@ export const LoginView = ({ onLoggedIn }) => {
         </Col>
       </Row>
     </Container>
-    // </div>
   );
 };
