@@ -11,42 +11,38 @@ export const MovieView = ({ movies }) => {
 
   const movie = movies.find((movie) => movie._id === movieId);
 
-  //const user = JSON.parse(localStorage.getItem("user"));
-
   console.log(movieId);
-
+  /* const centeredStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  }; */
   return (
-    <>
-      <Card className="my-5 justify-content-center">
-        <Row>
-          <Col md={7} className="col-12">
-            <img
-              src={movie.Image}
-              alt="movie cover"
-              className="mx-auto w-100"
-            />
-          </Col>
-          <Col>
-            <Card.Title className="my-1"> {movie.Title}</Card.Title>
+    <Card className="my-5">
+      <Row>
+        <Col md={9} className="col-10">
+          <img src={movie.Image} alt="movie cover" className="mx-auto w-100" />
+        </Col>
+        <Col>
+          <Card.Title className="my-1"> {movie.Title}</Card.Title>
 
-            <Card.Text>{movie.Description}</Card.Text>
-            <Card.Text>
-              <span className="text-title">Director:</span>{" "}
-              {movie.Director.Name}
-            </Card.Text>
-            <Card.Text>
-              <span className="text-title">Genre:</span> {movie.Genre.Name}
-            </Card.Text>
-            <Card.Text>
-              <span className="text-title">Year:</span> {movie.Year}
-            </Card.Text>
+          <Card.Text>{movie.Description}</Card.Text>
+          <Card.Text>
+            <span className="text-title">Director:</span> {movie.Director.Name}
+          </Card.Text>
+          <Card.Text>
+            <span className="text-title">Genre:</span> {movie.Genre.Name}
+          </Card.Text>
+          <Card.Text>
+            <span className="text-title">Year:</span> {movie.Year}
+          </Card.Text>
 
-            <Link to={`/`}>
-              <Button className="my-2">Back</Button>
-            </Link>
-          </Col>
-        </Row>
-      </Card>
-    </>
+          <Link to={`/`}>
+            <Button className="my-2">Back</Button>
+          </Link>
+        </Col>
+      </Row>
+    </Card>
   );
 };

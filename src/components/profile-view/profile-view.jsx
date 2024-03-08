@@ -10,10 +10,10 @@ export const ProfileView = ({
   setUser,
   removeFav,
   addFav,
-  isFavorite,
+  // isFavorite,
 }) => {
   const [username, setUsername] = useState(user.Username);
-  const [password, setPassword] = useState(user.Password);
+  // const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
 
@@ -32,7 +32,7 @@ export const ProfileView = ({
 
     const data = {
       Username: username,
-      Password: password,
+      // Password: password,
       Email: email,
       Birthday: birthday,
     };
@@ -99,7 +99,7 @@ export const ProfileView = ({
                 className="w-50 rounded"
               />
               <Card.Text>Username: {user.Username}</Card.Text>
-              <Card.Text>Password: {user.Password}</Card.Text>
+              {/* <Card.Text>Password: {user.Password}</Card.Text> */}
               <Card.Text>Email: {user.Email}</Card.Text>
               <Card.Text>Birthday: {user.Birthday}</Card.Text>
             </Card.Body>
@@ -116,7 +116,7 @@ export const ProfileView = ({
                 minLength="6"
                 placeholder={user.Username}
               />
-            </Form.Group>
+              {/* </Form.Group>
             <Form.Group controlId="formPassword">
               <Form.Label>Password:</Form.Label>
               <Form.Control
@@ -125,7 +125,7 @@ export const ProfileView = ({
                 placeholder="Enter A Password"
                 value={null}
                 required
-              />
+              /> */}
             </Form.Group>
             <Form.Group controlId="formEmail">
               <Form.Label>Email:</Form.Label>
@@ -171,7 +171,7 @@ export const ProfileView = ({
                   movie={movie}
                   removeFav={removeFav}
                   addFav={addFav}
-                  isFavorite={isFavorite}
+                  isFavorite={user.FavoriteMovies.includes(movie._id)}
                 />
               </Col>
             ))

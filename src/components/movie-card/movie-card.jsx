@@ -18,8 +18,8 @@ export const MovieCard = ({ movie, user, addFav, removeFav }) => {
       <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
 
       <Card.Body>
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Description}</Card.Text>
+        <Card.Title className="my-1">{movie.Title}</Card.Title>
+        {/* <Card.Text>{movie.Description}</Card.Text> */}
         <Card.Text>{movie.Director.Name}</Card.Text>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="primary" className="primaryButton">
