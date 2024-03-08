@@ -23,6 +23,12 @@ export const MainView = () => {
     setToken(token);
   };
 
+  const handleOnLogOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
+
   //API Hook
   useEffect(() => {
     if (!token) {
@@ -34,23 +40,26 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const moviesfromApi = data.map((movie) => {
-          return {
-            _id: movie._id,
-            Title: movie.Title,
-            Image: movie.Image,
-            Description: movie.Description,
-            Year: movie.Year,
-            Genre: {
-              Name: movie.Genre.Name,
-            },
-            Director: {
-              Name: movie.Director.Name,
-            },
-          };
-        });
+        console.log(data);
+        if (data) {
+          const moviesfromApi = data.map((movie) => {
+            return {
+              _id: movie._id,
+              Title: movie.Title,
+              Image: movie.Image,
+              Description: movie.Description,
+              Year: movie.Year,
+              Genre: {
+                Name: movie.Genre.Name,
+              },
+              Director: {
+                Name: movie.Director.Name,
+              },
+            };
+          });
 
-        setMovies(moviesfromApi);
+          setMovies(moviesfromApi);
+        }
       });
   }, [token]);
 
@@ -62,24 +71,34 @@ export const MainView = () => {
     fetch(
       `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}`,
       {
-        method: "POST",
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
-    ).then(async (response) => {
-      const userData = await response.json();
-      const userMovies = userData["FavoriteMovies"];
-      if (!userMovies) {
-        setFav("No favorites yet!");
-      } else {
-        const findMovies = movies.filter((m) => userMovies.includes(m.id));
-        const movieList = [];
-        findMovies.forEach((movie) => movieList.push(movie));
-        setFav(movieList);
-      }
-    });
-  });
+    )
+      .then(async (response) => {
+        if (!response.ok && response.status === 401) {
+          // this means that the token has expired
+          handleOnLogOut();
+          return;
+        }
+
+        const userData = await response.json();
+        const userMovies = userData["FavoriteMovies"];
+        if (!userMovies) {
+          setFav("No favorites yet!");
+        } else {
+          const findMovies = movies.filter((m) => userMovies.includes(m.id));
+          const movieList = [];
+          findMovies.forEach((movie) => movieList.push(movie));
+          setFav(movieList);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const addFav = (movieId) => {
     fetch(
@@ -135,14 +154,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      />
+      <NavigationBar user={user} onLoggedOut={handleOnLogOut} />
       <Row className="justify-content-center my-4">
         <Routes>
           <Route
@@ -233,16 +245,16 @@ export const MainView = () => {
                     {movies.map((movie) => (
                       <Col
                         className="mb-4"
-                        key={`${movie.id}_movie_list`}
+                        key={`${movie._id}_movie_list`}
                         lg={3}
                         md={4}
                         sm={12}
                       >
                         <MovieCard
                           movie={movie}
-                          isFavorite={favMovies}
                           addFav={addFav}
                           removeFav={removeFav}
+                          user={user}
                         />
                       </Col>
                     ))}

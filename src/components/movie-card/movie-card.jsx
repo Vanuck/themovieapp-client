@@ -4,64 +4,13 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
 
-export const MovieCard = ({ movie, token, user, setUser }) => {
+export const MovieCard = ({ movie, user, addFav, removeFav }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-
   useEffect(() => {
-    if (user.favoriteMovies && user.favoriteMovies.includes(movie._id)) {
+    if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
       setIsFavorite(true);
     }
   }, [user]);
-
-  const addFavoriteMovie = () => {
-    fetch(
-      `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movie._Id}`,
-      { method: "POST", headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.log("Failed to add fav movie");
-        }
-      })
-      .then((user) => {
-        if (user) {
-          alert("successfully added to favorites");
-          localStorage.setItem("user", JSON.stringify(user));
-          setUser(user);
-          setIsFavorite(true);
-        }
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
-
-  const removeFavoriteMovie = () => {
-    fetch(
-      `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movie._Id}`,
-      { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert("Failed");
-        }
-      })
-      .then((user) => {
-        if (user) {
-          alert("successfully deleted from favorites");
-          localStorage.setItem("user", JSON.stringify(user));
-          setUser(user);
-          setIsFavorite(false);
-        }
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
 
   return (
     <Card className="moviecard h-100">
@@ -71,7 +20,7 @@ export const MovieCard = ({ movie, token, user, setUser }) => {
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Description}</Card.Text>
-        <Card.Text>{movie.Director}</Card.Text>
+        <Card.Text>{movie.Director.Name}</Card.Text>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="primary" className="primaryButton">
             Details
@@ -79,11 +28,11 @@ export const MovieCard = ({ movie, token, user, setUser }) => {
         </Link>
         <Card.Body className="favorite-btns">
           {!isFavorite ? (
-            <Button className="fav-btn" onClick={addFavoriteMovie}>
+            <Button className="fav-btn" onClick={() => addFav(movie._id)}>
               +
             </Button>
           ) : (
-            <Button className="fav-btn" onClick={removeFavoriteMovie}>
+            <Button className="fav-btn" onClick={() => removeFav(movie._id)}>
               -
             </Button>
           )}

@@ -19,7 +19,7 @@ export const ProfileView = ({
 
   const navigate = useNavigate();
 
-  const favoriteMovieList = movies.filter((m) =>
+  const favoriteMovieList = movies?.filter((m) =>
     user.FavoriteMovies.includes(m._id)
   );
 
