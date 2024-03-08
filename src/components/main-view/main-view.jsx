@@ -35,7 +35,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch(`https://themovieapp-1fbdf8d66a92.herokuapp.com/movies`, {
+    fetch(`https://themovieapp-d539f95ea100.herokuapp.com/movies`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -69,7 +69,7 @@ export const MainView = () => {
     }
 
     fetch(
-      `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}`,
+      `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}`,
       {
         method: "GET",
         headers: {
@@ -102,7 +102,7 @@ export const MainView = () => {
 
   const addFav = (movieId) => {
     fetch(
-      `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+      `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
         method: "POST",
         headers: {
@@ -128,7 +128,7 @@ export const MainView = () => {
   };
   const removeFav = (movieId) => {
     fetch(
-      `https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+      `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}/movies/${movieId}`,
       {
         method: "DELETE",
         headers: {

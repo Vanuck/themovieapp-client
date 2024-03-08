@@ -38,7 +38,7 @@ export const ProfileView = ({
     };
 
     fetch(
-      "https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}",
+      "https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}",
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -67,7 +67,7 @@ export const ProfileView = ({
 
   const handleDelete = () => {
     fetch(
-      "https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}",
+      "https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}",
       {
         method: "DELETE",
         headers: {

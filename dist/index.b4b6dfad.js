@@ -27217,7 +27217,7 @@ const MainView = ()=>{
     //API Hook
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch(`https://themovieapp-1fbdf8d66a92.herokuapp.com/movies`, {
+        fetch(`https://themovieapp-d539f95ea100.herokuapp.com/movies`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27247,7 +27247,7 @@ const MainView = ()=>{
     ]);
     (0, _react.useEffect)(()=>{
         if (!user) return;
-        fetch(`https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27272,7 +27272,7 @@ const MainView = ()=>{
         });
     }, []);
     const addFav = (movieId)=>{
-        fetch(`https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+        fetch(`https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27289,7 +27289,7 @@ const MainView = ()=>{
         });
     };
     const removeFav = (movieId)=>{
-        fetch(`https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+        fetch(`https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -48494,7 +48494,7 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/login", {
+        fetch("https://themovieapp-d539f95ea100.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -48688,7 +48688,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/users", {
+        fetch("https://themovieapp-d539f95ea100.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -49060,7 +49060,7 @@ const ProfileView = ({ user, movies, setUser, removeFav, addFav, isFavorite })=>
             Email: email,
             Birthday: birthday
         };
-        fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}", {
+        fetch("https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -49081,7 +49081,7 @@ const ProfileView = ({ user, movies, setUser, removeFav, addFav, isFavorite })=>
         });
     };
     const handleDelete = ()=>{
-        fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/users/${user.Username}", {
+        fetch("https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}", {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
