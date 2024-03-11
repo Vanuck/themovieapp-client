@@ -195,8 +195,10 @@ export const MainView = () => {
                   <Col md={10}>
                     <Row>
                       <ProfileView
+                        movies={movies}
                         user={user}
                         isFavorite={favMovies}
+                        setUser={setUser}
                         addFav={addFav}
                         removeFav={removeFav}
                         onDelete={() => {

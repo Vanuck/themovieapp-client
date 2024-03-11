@@ -12,15 +12,15 @@ export const ProfileView = ({
   addFav,
   // isFavorite,
 }) => {
-  const [username, setUsername] = useState(user.Username);
+  const [username, setUsername] = useState(user?.Username);
   // const [password, setPassword] = useState(user.Password);
-  const [email, setEmail] = useState(user.Email);
-  const [birthday, setBirthday] = useState(user.Birthday);
+  const [email, setEmail] = useState(user?.Email);
+  const [birthday, setBirthday] = useState(user?.Birthday);
 
   const navigate = useNavigate();
 
   const favoriteMovieList = movies?.filter((m) =>
-    user.FavoriteMovies.includes(m._id)
+    user?.FavoriteMovies.includes(m._id)
   );
 
   const token = localStorage.getItem("token");
@@ -38,7 +38,7 @@ export const ProfileView = ({
     };
 
     fetch(
-      "https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}",
+      `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}`,
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -67,7 +67,7 @@ export const ProfileView = ({
 
   const handleDelete = () => {
     fetch(
-      "https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}",
+      `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}`,
       {
         method: "DELETE",
         headers: {
@@ -169,6 +169,7 @@ export const ProfileView = ({
               >
                 <MovieCard
                   movie={movie}
+                  user={user}
                   removeFav={removeFav}
                   addFav={addFav}
                   isFavorite={user.FavoriteMovies.includes(movie._id)}

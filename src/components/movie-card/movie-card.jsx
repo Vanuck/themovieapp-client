@@ -9,6 +9,8 @@ export const MovieCard = ({ movie, user, addFav, removeFav }) => {
   useEffect(() => {
     if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
       setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
     }
   }, [user]);
 
