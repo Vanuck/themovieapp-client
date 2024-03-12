@@ -1,6 +1,7 @@
 # The Movie App <img align="right" height="400" width="365" src="img/topsters2.png">
 
 Movie API App
+[![Hits-of-Code](https://hitsofcode.com/github/vanuck/themovieapp-client?branch=main)](https://hitsofcode.com/github/vanuck/themovieapp-client/view?branch=main)
 
 ## Goal:
 
