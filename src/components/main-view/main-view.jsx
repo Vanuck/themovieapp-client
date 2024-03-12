@@ -7,6 +7,10 @@ import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { ProfileView } from "../profile-view/profile-view.jsx";
 import { Col, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getMovies } from "../../redux/slices/movies.js";
+import MovieList from "../movie-list/movie-list";
+
 import "./main-view.scss";
 
 export const MainView = () => {
@@ -15,7 +19,11 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
-  const [movies, setMovies] = useState([]);
+  const movies = useSelector((state) => state.movies);
+  //const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+
+  // const [movies, getMovies] = useState([]);
   const [favMovies, setFav] = useState([]);
 
   const handleOnLoggedIn = (user, token) => {
@@ -60,7 +68,7 @@ export const MainView = () => {
             };
           });
 
-          setMovies(moviesfromApi);
+          dispatch(getMovies(moviesfromApi));
         }
       });
   }, [token]);
@@ -216,6 +224,20 @@ export const MainView = () => {
             }
           />
           <Route
+            path="/movies"
+            element={
+              !user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col>
+                  <h2 className="my-4">No movies to display!</h2>
+                </Col>
+              ) : (
+                <MovieList />
+              )
+            }
+          />
+          <Route
             path="/movies/:movieId"
             element={
               <>
@@ -225,12 +247,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={10}>
-                    <MovieView
-                      movies={movies}
-                      isFavorite={favMovies}
-                      addFav={addFav}
-                      removeFav={removeFav}
-                    />
+                    <MovieView />
                   </Col>
                 )}
               </>
