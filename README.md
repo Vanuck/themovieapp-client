@@ -15,18 +15,18 @@ Movie API App
 
 ## Description
 
-    The Movie App is a single-page application (SPA) built using React, React Bootstrap, React Router, Redux, and Bootstrap. It showcases curated film content. The application allows users to view a list of movies, search for movies by title, view details about individual movies, and save movies to thier Favorites. Profile updates and user authentication are also part of this app. The application is responsive and mobile-friendly. JWT tokens are used for user authentication and authorization along with password hashing for security on the backend.
+The Movie App is a single-page application (SPA) built using React, React Bootstrap, React Router, Redux, and Bootstrap. It showcases curated film content. The application allows users to view a list of movies, search for movies by title, view details about individual movies, and save movies to thier Favorites. Profile updates and user authentication are also part of this app. The application is responsive and mobile-friendly. JWT tokens are used for user authentication and authorization along with password hashing for security on the backend.
 
 ## Accessing the Hosted Site
 
-    The Movie App is now hosted and accessible online. You can visit the site at: https://
+The Movie App is now hosted and accessible online. You can visit the site at: https://
 
 ## Prerequisites
 
-    Before you begin, ensure you have met the following requirements:
+Before you begin, ensure you have met the following requirements:
 
-    - Node.js installed on your local machine.
-    - npm (Node Package Manager)
+- Node.js installed on your local machine.
+- npm (Node Package Manager)
 
 ## Technologies Used
 
@@ -35,7 +35,7 @@ Movie API App
     - React Router: A routing library for React that enables navigation between different components.
     - Redux: A Predictable State Container for JS Apps
 
-    ### Main Components
+### Main Components
 
 - **MainView**: Is the entry point, orchestrating navigation and rendering of different views.
 - **NavigationBar**: Provides navigation based on user authentication status.
@@ -47,7 +47,7 @@ Movie API App
 
 ### Redux Setup
 
-    The application leverages Redux Toolkit for state management, with slices for user authentication (`user`) and movie data (`movies`). It employs asynchronous thunks for user interactions with the backend API, managing application state efficiently.
+The application leverages Redux Toolkit for state management, with slices for user authentication (`user`) and movie data (`movies`). It employs asynchronous thunks for user interactions with the backend API, managing application state efficiently.
 
 ## API
 
