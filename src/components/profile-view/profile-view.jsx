@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import topsters2 from "../../../img/topsters2.png";
+import "./profile-view.scss";
 
 export const ProfileView = ({
   user,
@@ -88,27 +90,36 @@ export const ProfileView = ({
 
   return (
     <Container className="my-5">
+      <h1 style={{ color: "white" }}>Profile</h1>
       <Row>
         <Col md={5}>
-          <Card>
+          <Card className="profileCard">
             <Card.Body>
               <Card.Title>My Profile</Card.Title>
               <Card.Img
+                className="topsters2"
                 variant="top"
-                src="https://via.placeholder.com/200"
-                className="w-50 rounded"
+                src={topsters2}
+                fluid
               />
-              <Card.Text>Username: {user.Username}</Card.Text>
+              <Card.Text style={{ color: "indigo" }}>
+                {" "}
+                Username: {user.Username}
+              </Card.Text>
               {/* <Card.Text>Password: {user.Password}</Card.Text> */}
-              <Card.Text>Email: {user.Email}</Card.Text>
-              <Card.Text>Birthday: {user.Birthday}</Card.Text>
+              <Card.Text style={{ color: "indigo" }}>
+                Email: {user.Email}
+              </Card.Text>
+              <Card.Text style={{ color: "indigo" }}>
+                Birthday: {user.Birthday}
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
         <Col md={7}>
           <Form onSubmit={handleUpdate}>
             <Form.Group controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label style={{ color: "white" }}>Username:</Form.Label>
               <Form.Control
                 type="text"
                 value={username}
@@ -116,19 +127,9 @@ export const ProfileView = ({
                 minLength="6"
                 placeholder={user.Username}
               />
-              {/* </Form.Group>
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter A Password"
-                value={null}
-                required
-              /> */}
             </Form.Group>
             <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
+              <Form.Label style={{ color: "white" }}>Email:</Form.Label>
               <Form.Control
                 type="email"
                 value={email}
@@ -137,7 +138,7 @@ export const ProfileView = ({
               />
             </Form.Group>
             <Form.Group controlId="formBirthday">
-              <Form.Label>Birthday:</Form.Label>
+              <Form.Label style={{ color: "white" }}>Birthday:</Form.Label>
               <Form.Control
                 type="date"
                 value={birthday}
@@ -148,23 +149,24 @@ export const ProfileView = ({
             <Button type="submit" onClick={handleUpdate} className="mt-2">
               Update
             </Button>
-            <Button onClick={handleDelete} className="mt-2">
+            <Button variant="danger" onClick={handleDelete} className="mt-2">
               Delete User
             </Button>
           </Form>
         </Col>
       </Row>
       <Row>
-        <h2>Favorite Movies</h2>
+        <h1 style={{ color: "white" }}>Favorite Movies</h1>
+
         <Row className="justify-content-center">
           {favoriteMovieList?.length !== 0 ? (
             favoriteMovieList?.map((movie) => (
               <Col
-                sm={7}
-                md={5}
-                lg={3}
-                xl={2}
-                className="mx-2 mt-2 mb-5 col-6 similar-movies-img"
+                sm={2}
+                md={3}
+                lg={4}
+                xl={5}
+                className="mx-2 mt-2 mb-8 col-6 similar-movies-img"
                 key={movie._id}
               >
                 <MovieCard
@@ -178,7 +180,9 @@ export const ProfileView = ({
             ))
           ) : (
             <Col>
-              <p>You do not have any favorites Movies</p>
+              <h1 style={{ color: "white" }}>
+                You do not have any Favorite Movies
+              </h1>
             </Col>
           )}
         </Row>

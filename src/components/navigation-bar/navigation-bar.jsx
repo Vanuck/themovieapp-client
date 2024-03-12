@@ -1,12 +1,19 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
+import Moviereel from "../../../img/Moviereel.jpg";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar bg="primary" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          The Movie App
+          <Image
+            className="Moviereel"
+            src={Moviereel}
+            fluid
+            style={{ width: "75px" }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="-basic-navbar-nav">
@@ -23,9 +30,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link className="navLink" as={Link} to="/">
+                {/* <Nav.Link className="navLink" as={Link} to="/">
                   Home
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link
                   className="navLink"
                   as={Link}

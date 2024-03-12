@@ -49,6 +49,8 @@ export const MainView = () => {
               Image: movie.Image,
               Description: movie.Description,
               Year: movie.Year,
+              Author: movie.Author,
+              Line: movie.Line,
               Genre: {
                 Name: movie.Genre.Name,
               },

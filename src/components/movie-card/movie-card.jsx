@@ -15,31 +15,40 @@ export const MovieCard = ({ movie, user, addFav, removeFav }) => {
   }, [user]);
 
   return (
-    <Card className="moviecard h-100">
+    <Card className="moviecard h-100" style={{ cursor: "pointer" }}>
       <br />
-      <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
+      <Link
+        to={`/movies/${encodeURIComponent(movie._id)}`}
+        style={{ cursor: "pointer" }}
+      >
+        <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
 
-      <Card.Body>
-        <Card.Title className="my-1">{movie.Title}</Card.Title>
-        {/* <Card.Text>{movie.Description}</Card.Text> */}
-        <Card.Text>{movie.Director.Name}</Card.Text>
-        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button variant="primary" className="primaryButton">
-            Details
-          </Button>
-        </Link>
-        <Card.Body className="favorite-btns">
-          {!isFavorite ? (
-            <Button className="fav-btn" onClick={() => addFav(movie._id)}>
-              +
-            </Button>
-          ) : (
-            <Button className="fav-btn" onClick={() => removeFav(movie._id)}>
-              -
-            </Button>
-          )}
+        <Card.Body>
+          <Card.Title>{movie.Title}</Card.Title>
+
+          <Card.Text>{movie.Director.Name}</Card.Text>
         </Card.Body>
-      </Card.Body>
+      </Link>
+
+      <div className="favorite-btns ">
+        {!isFavorite ? (
+          <Button
+            variant="bottom"
+            className="fav-btn"
+            onClick={() => addFav(movie._id)}
+          >
+            Add to Favorites
+          </Button>
+        ) : (
+          <Button
+            variant="bottom"
+            className="fav-btn"
+            onClick={() => removeFav(movie._id)}
+          >
+            Remove From Favorites
+          </Button>
+        )}
+      </div>
     </Card>
   );
 };

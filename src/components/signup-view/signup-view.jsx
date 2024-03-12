@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Moviereel2 from "../../../img/Moviereel2.jpg";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -58,6 +60,7 @@ export const SignupView = () => {
               <Card.Body>
                 <br />
                 <Card.Title>Please Signup</Card.Title>
+                <Image className="Moviereel2" src={Moviereel2} fluid />
                 <Form onSubmit={handleSubmit} className="mt-6">
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
