@@ -20,7 +20,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password,
     };
 
-    fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/login", {
+    fetch("https://themovieapp-d539f95ea100.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,15 +44,15 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    // <div style={{ backgroundimage: `url(${ImgMovies})` }}>
     <Container>
       <Row>
         <Col>
           <CardGroup>
             <Card>
               <Card.Body>
+                <br />
                 <Card.Title>Please Login</Card.Title>
-                <Form onSubmit={handleSubmit} className="mt-5">
+                <Form onSubmit={handleSubmit} className="mt-9">
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
@@ -87,6 +87,5 @@ export const LoginView = ({ onLoggedIn }) => {
         </Col>
       </Row>
     </Container>
-    // </div>
   );
 };

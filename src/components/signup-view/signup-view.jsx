@@ -23,7 +23,7 @@ export const SignupView = () => {
       Birthday: birthday,
     };
 
-    fetch("https://themovieapp-1fbdf8d66a92.herokuapp.com/users", {
+    fetch("https://themovieapp-d539f95ea100.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -56,8 +56,9 @@ export const SignupView = () => {
           <CardGroup>
             <Card>
               <Card.Body>
+                <br />
                 <Card.Title>Please Signup</Card.Title>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="mt-6">
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
