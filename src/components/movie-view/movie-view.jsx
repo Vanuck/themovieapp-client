@@ -9,10 +9,9 @@ document.body.style = "background: black;";
 export const MovieView = () => {
   // REDUX
   const movies = useSelector((state) => state.movies.data);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const { movieId } = useParams();
-  //const movies = useselector((state) => state.movies);
 
   const movie = movies.find((movie) => movie._id === movieId);
 
@@ -22,7 +21,6 @@ export const MovieView = () => {
     <Card className="poster">
       <Card.Img variant="top" src={movie.Image} alt="movie cover" />
       <Card.Body>
-        {/* <Card.Title>{movie.Title}</Card.Title> */}
         <Card.Text>
           <span className="text-title">Director:</span> {movie.Director.Name}
         </Card.Text>

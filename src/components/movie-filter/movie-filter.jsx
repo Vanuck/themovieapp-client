@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
-//import { XLg } from "react-bootstrap-icons";
 
 //REDUX
 import { useSelector, useDispatch } from "react-redux";
@@ -24,9 +23,7 @@ export default function MovieFilter() {
           <Button
             variant="outline-secondary"
             onClick={() => dispatch(setFilter(""))}
-          >
-            {/* <XLg size={"20px"} /> */}
-          </Button>
+          ></Button>
         </InputGroup>
       </Form.Group>
     </>

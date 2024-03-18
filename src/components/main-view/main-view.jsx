@@ -8,38 +8,34 @@ import { ProfileView } from "../profile-view/profile-view.jsx";
 import { Col, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getMovies } from "../../redux/slices/movies.js";
+import { setMovies } from "../../redux/slices/movies.js";
+import { setUserData, setToken } from "../../redux/slices/user";
 import MovieList from "../movie-list/movie-list";
 
 import "./main-view.scss";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
-
-  const movies = useSelector((state) => state.movies);
-  //const [user, setUser] = useState(null);
+  const movies = useSelector((state) => state.movies?.data);
+  const user = useSelector((state) => state.user.userData);
+  const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
 
-  // const [movies, getMovies] = useState([]);
-  const [favMovies, setFav] = useState([]);
+  const [setFav] = useState([]);
 
   const handleOnLoggedIn = (user, token) => {
-    setUser(user);
-    setToken(token);
+    dispatch(setUserData(user));
+    dispatch(setToken(token));
   };
 
   const handleOnLogOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.clear();
+    dispatch(setUserData(null));
+    dispatch(setToken(token));
   };
 
   //API Hook
   useEffect(() => {
     if (!token) {
+      console.log("No token");
       return;
     }
 
@@ -48,7 +44,6 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data) {
           const moviesfromApi = data.map((movie) => {
             return {
@@ -68,7 +63,7 @@ export const MainView = () => {
             };
           });
 
-          dispatch(getMovies(moviesfromApi));
+          dispatch(setMovies(moviesfromApi));
         }
       });
   }, [token]);
@@ -95,6 +90,7 @@ export const MainView = () => {
         }
 
         const userData = await response.json();
+        dispatch(setUserData(userData));
         const userMovies = userData["FavoriteMovies"];
         if (!userMovies) {
           setFav("No favorites yet!");
@@ -123,8 +119,7 @@ export const MainView = () => {
       .then(async (response) => {
         if (response.ok) {
           const data = await response.json();
-          localStorage.setItem("user", JSON.stringify(data));
-          setUser(data);
+          dispatch(setUserData(data));
 
           alert("Added to favorites!");
         } else {
@@ -149,8 +144,8 @@ export const MainView = () => {
       .then(async (response) => {
         if (response.ok) {
           const data = await response.json();
-          localStorage.setItem("user", JSON.stringify(data));
-          setUser(data);
+          //localStorage.setItem("user", JSON.stringify(data));
+          dispatch(setUserData(data));
 
           alert("Removed from favorites!");
         } else {
@@ -162,6 +157,7 @@ export const MainView = () => {
       });
   };
 
+  console.log({ movies, user });
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={handleOnLogOut} />
@@ -169,58 +165,16 @@ export const MainView = () => {
         <Routes>
           <Route
             path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={6}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
+            element={user ? <Navigate to="/" /> : <SignupView />}
           />
           <Route
             path="/login"
             element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={6}>
-                    <LoginView onLoggedIn={handleOnLoggedIn} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/profile/:Username"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <Col md={10}>
-                    <Row>
-                      <ProfileView
-                        movies={movies}
-                        user={user}
-                        isFavorite={favMovies}
-                        setUser={setUser}
-                        addFav={addFav}
-                        removeFav={removeFav}
-                        onDelete={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
-                      />
-                    </Row>
-                  </Col>
-                )}
-              </>
+              user ? (
+                <Navigate to="/" />
+              ) : (
+                <LoginView onLoggedIn={handleOnLoggedIn} />
+              )
             }
           />
           <Route
@@ -240,48 +194,51 @@ export const MainView = () => {
           <Route
             path="/movies/:movieId"
             element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={10}>
-                    <MovieView />
-                  </Col>
-                )}
-              </>
+              !user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col>The list is empty!</Col>
+              ) : (
+                <MovieView />
+              )
             }
           />
+
           <Route
             path="/"
             element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <>
-                    {movies.map((movie) => (
-                      <Col
-                        className="mb-4"
-                        key={`${movie._id}_movie_list`}
-                        lg={3}
-                        md={4}
-                        sm={12}
-                      >
-                        <MovieCard
-                          movie={movie}
-                          addFav={addFav}
-                          removeFav={removeFav}
-                          user={user}
-                        />
-                      </Col>
-                    ))}
-                  </>
-                )}
-              </>
+              !user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  {movies.map((movie) => (
+                    <Col
+                      className="mb-4"
+                      key={`${movie._id}_movie_list`}
+                      lg={3}
+                      md={4}
+                      sm={12}
+                    >
+                      <MovieCard
+                        movie={movie}
+                        addFav={addFav}
+                        removeFav={removeFav}
+                      />
+                    </Col>
+                  ))}
+                </>
+              )
+            }
+          />
+
+          <Route
+            path="/profile/:username"
+            element={
+              !user ? (
+                <ProfileView addFav={addFav} removeFav={removeFav} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
             }
           />
         </Routes>

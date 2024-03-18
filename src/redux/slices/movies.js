@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const APIUrl = `https://themovieapp-d539f95ea100.herokuapp.com/movies`;
 
-// Async thunk for fetching movies
+// Async thunk for geting movies
 export const getMovies = createAsyncThunk(
   "movies/getMovies",
   async (token, { rejectWithValue }) => {
@@ -45,7 +45,7 @@ const movieSlice = createSlice({
   },
   reducers: {
     setMovies: (state, action) => {
-      state.movies = action.payload;
+      state.data = action.payload;
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
@@ -53,14 +53,14 @@ const movieSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMovies.pending, (state) => {
+      .addCase(getMovies.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchMovies.fulfilled, (state, action) => {
+      .addCase(getMovies.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(fetchMovies.rejected, (state, action) => {
+      .addCase(getMovies.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })

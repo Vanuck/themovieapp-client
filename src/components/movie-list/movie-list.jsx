@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import MovieFilter from "../movie-filter/movie-filter";
-import MovieCard from "../movie-card/movie-card";
+import { MovieCard } from "../movie-card/movie-card";
 import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 

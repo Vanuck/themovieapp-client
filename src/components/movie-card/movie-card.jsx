@@ -1,25 +1,15 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
 import { useDispatch, useSelector } from "react-redux";
 
-export const MovieCard = ({ movie, user, addFav, removeFav }) => {
+export const MovieCard = ({ movie, addFav, removeFav }) => {
   //REDUX
-  const isFavorite = useSelector((state) =>
-    state.user.userData.favoriteMovies.includes(movie._id)
-  );
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.userData);
 
-  //const [isFavorite, setIsFavorite] = useState(false);
-  useEffect(() => {
-    if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, [user]);
+  const isFavorite = user.FavoriteMovies.includes(movie._id);
 
   return (
     <Card className="moviecard h-100" style={{ cursor: "pointer" }}>

@@ -1,40 +1,39 @@
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+//import { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import { useDispatch, useSelector } from "react-redux";
 import topsters2 from "../../../img/topsters2.png";
 import "./profile-view.scss";
 
-export const ProfileView = ({
-  user,
-  movies,
-  setUser,
-  removeFav,
-  addFav,
-  // isFavorite,
-}) => {
-  const [username, setUsername] = useState(user?.Username);
-  // const [password, setPassword] = useState(user.Password);
-  const [email, setEmail] = useState(user?.Email);
-  const [birthday, setBirthday] = useState(user?.Birthday);
+export const ProfileView = ({ removeFav, addFav }) => {
+  // get user and movies from redux
+  const movies = useSelector((state) => state.movies?.data);
+  const user = useSelector((state) => state.user.userData);
+  const token = useSelector((state) => state.user.token);
+  const dispatch = useDispatch();
 
+  //const [username, setUsername] = useState(user?.Username);
+  //const [email, setEmail] = useState(user?.Email);
+  //const [birthday, setBirthday] = useState(user?.Birthday);
+
+  const { username } = useParams();
   const navigate = useNavigate();
 
   const favoriteMovieList = movies?.filter((m) =>
     user?.FavoriteMovies.includes(m._id)
   );
 
-  const token = localStorage.getItem("token");
+  //const token = localStorage.getItem("token");
 
   const handleUpdate = (event) => {
     event.preventDefault();
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    //const user = JSON.parse(localStorage.getItem("user"));
 
     const data = {
       Username: username,
-      // Password: password,
       Email: email,
       Birthday: birthday,
     };
@@ -54,14 +53,16 @@ export const ProfileView = ({
         console.log(response);
         if (response.ok) {
           const updatedUser = await response.json();
-          localStorage.setItem("user", JSON.stringify(updatedUser));
+          //localStorage.setItem("user", JSON.stringify(updatedUser));
           setUser(updatedUser);
           alert("Update successful");
           window.location.reload();
         } else {
           alert("Update incomplete");
         }
+        dispatch(setUserData(updatedUser));
       })
+
       .catch((error) => {
         console.error("Error: ", error);
       });
@@ -78,9 +79,9 @@ export const ProfileView = ({
       }
     ).then((response) => {
       if (response.ok) {
-        setUser(null);
+        dispatch(clearUser());
         alert("User has been deleted");
-        localStorage.clear();
+
         navigate("/");
       } else {
         alert("Something went wrong.");
@@ -106,7 +107,6 @@ export const ProfileView = ({
                 {" "}
                 Username: {user.Username}
               </Card.Text>
-              {/* <Card.Text>Password: {user.Password}</Card.Text> */}
               <Card.Text style={{ color: "indigo" }}>
                 Email: {user.Email}
               </Card.Text>
