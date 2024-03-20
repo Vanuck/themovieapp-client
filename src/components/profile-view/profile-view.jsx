@@ -123,7 +123,7 @@ export const ProfileView = ({ removeFav, addFav }) => {
               <Form.Control
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => username(e.target.value)}
                 minLength="6"
                 placeholder={user.Username}
               />

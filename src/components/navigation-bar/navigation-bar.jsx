@@ -14,7 +14,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             fluid
             style={{ width: "75px" }}
           />
-          <Navbar.Text className="mx-2">Welcome!</Navbar.Text>
+          <Navbar.Text className="mx-2">Welcome to The Movie App!</Navbar.Text>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="-basic-navbar-nav">

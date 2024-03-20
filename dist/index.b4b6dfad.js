@@ -27470,7 +27470,7 @@ const MainView = ()=>{
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                            path: "/profile/:username",
+                            path: "/profile/user",
                             element: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileViewJsx.ProfileView), {
                                 addFav: addFav,
                                 removeFav: removeFav
@@ -54145,7 +54145,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Text, {
                             className: "mx-2",
-                            children: "Welcome!"
+                            children: "Welcome to The Movie App!"
                         }, void 0, false, {
                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
                             lineNumber: 17,
@@ -54443,7 +54443,7 @@ const ProfileView = ({ removeFav, addFav })=>{
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                             type: "text",
                                             value: username,
-                                            onChange: (e)=>setUsername(e.target.value),
+                                            onChange: (e)=>username(e.target.value),
                                             minLength: "6",
                                             placeholder: user.Username
                                         }, void 0, false, {

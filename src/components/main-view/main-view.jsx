@@ -232,7 +232,7 @@ export const MainView = () => {
           />
 
           <Route
-            path="/profile/:username"
+            path="/profile/user"
             element={
               !user ? (
                 <ProfileView addFav={addFav} removeFav={removeFav} />
