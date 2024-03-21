@@ -11,7 +11,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           <Image
             className="Moviereel"
             src={Moviereel}
-            fluid
+            fluid="true"
             style={{ width: "75px" }}
           />
           <Navbar.Text className="mx-2">Welcome to The Movie App!</Navbar.Text>
@@ -31,9 +31,6 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                {/* <Nav.Link className="navLink" as={Link} to="/">
-                  Home
-                </Nav.Link> */}
                 <Nav.Link
                   className="navLink"
                   as={Link}

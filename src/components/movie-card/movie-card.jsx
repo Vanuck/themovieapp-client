@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-//import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";

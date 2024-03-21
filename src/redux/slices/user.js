@@ -55,7 +55,14 @@ export const toggleFavorite = createAsyncThunk(
 // Define other async thunks as needed for updating user data and deleting account
 const userSlice = createSlice({
   name: "user",
-  initialState: { userData: null, token: null, status: "idle", error: null },
+  initialState: {
+    userData: localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
+    token: localStorage.getItem("token") || null,
+    status: "idle",
+    error: null,
+  },
   reducers: {
     setUserData: (state, action) => {
       localStorage.setItem("user", JSON.stringify(action.payload));

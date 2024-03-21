@@ -38,9 +38,9 @@ export const getMovies = createAsyncThunk(
 const movieSlice = createSlice({
   name: "movies",
   initialState: {
-    data: [], // Array of movies
-    filter: "", // String for filtering movie array
-    status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+    data: [],
+    filter: "",
+    status: "idle",
     error: null,
   },
   reducers: {
@@ -67,7 +67,6 @@ const movieSlice = createSlice({
       .addMatcher(
         (action) => action.type === "user/clearUser",
         (state) => {
-          // Reset the filter when `clearUser` is dispatched / the user is logged out
           state.filter = "";
         }
       );

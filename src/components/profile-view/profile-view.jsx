@@ -1,36 +1,32 @@
 import { useParams, useNavigate } from "react-router-dom";
-//import { useState } from "react";
+import { useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import { useDispatch, useSelector } from "react-redux";
 import topsters2 from "../../../img/topsters2.png";
 import "./profile-view.scss";
+import { setUserData, clearUser } from "../../redux/slices/user";
 
 export const ProfileView = ({ removeFav, addFav }) => {
   // get user and movies from redux
   const movies = useSelector((state) => state.movies?.data);
-  const user = useSelector((state) => state.user.userData);
-  const token = useSelector((state) => state.user.token);
+  const user = useSelector((state) => state.user?.userData);
+  const token = useSelector((state) => state.user?.token);
   const dispatch = useDispatch();
 
-  //const [username, setUsername] = useState(user?.Username);
-  //const [email, setEmail] = useState(user?.Email);
-  //const [birthday, setBirthday] = useState(user?.Birthday);
+  const [username, setUsername] = useState(user?.Username);
+  const [email, setEmail] = useState(user?.Email);
+  const [birthday, setBirthday] = useState(user?.Birthday);
 
-  const { username } = useParams();
   const navigate = useNavigate();
 
   const favoriteMovieList = movies?.filter((m) =>
     user?.FavoriteMovies.includes(m._id)
   );
 
-  //const token = localStorage.getItem("token");
-
   const handleUpdate = (event) => {
     event.preventDefault();
-
-    //const user = JSON.parse(localStorage.getItem("user"));
 
     const data = {
       Username: username,
@@ -42,27 +38,24 @@ export const ProfileView = ({ removeFav, addFav }) => {
       `https://themovieapp-d539f95ea100.herokuapp.com/users/${user.Username}`,
       {
         method: "PUT",
-        body: JSON.stringify(data),
+
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify(data),
       }
     )
       .then(async (response) => {
         console.log(response);
         if (response.ok) {
           const updatedUser = await response.json();
-          //localStorage.setItem("user", JSON.stringify(updatedUser));
-          setUser(updatedUser);
+          dispatch(setUserData(updatedUser));
           alert("Update successful");
-          window.location.reload();
         } else {
           alert("Update incomplete");
         }
-        dispatch(setUserData(updatedUser));
       })
-
       .catch((error) => {
         console.error("Error: ", error);
       });
@@ -101,7 +94,7 @@ export const ProfileView = ({ removeFav, addFav }) => {
                 className="topsters2"
                 variant="top"
                 src={topsters2}
-                fluid
+                fluid="true"
               />
               <Card.Text style={{ color: "indigo" }}>
                 {" "}
@@ -123,9 +116,9 @@ export const ProfileView = ({ removeFav, addFav }) => {
               <Form.Control
                 type="text"
                 value={username}
-                onChange={(e) => username(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 minLength="6"
-                placeholder={user.Username}
+                placeholder="Type username"
               />
             </Form.Group>
             <Form.Group controlId="formEmail">
@@ -134,7 +127,7 @@ export const ProfileView = ({ removeFav, addFav }) => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={user.Email}
+                placeholder="Type email"
               />
             </Form.Group>
             <Form.Group controlId="formBirthday">
@@ -143,7 +136,7 @@ export const ProfileView = ({ removeFav, addFav }) => {
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                placeholder={user.Birthday}
+                placeholder="Type birthday"
               />
             </Form.Group>
             <Button type="submit" onClick={handleUpdate} className="mt-2">

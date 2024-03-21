@@ -2,14 +2,13 @@ import "./movie-view.scss";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 document.body.style = "background: black;";
 
 export const MovieView = () => {
   // REDUX
   const movies = useSelector((state) => state.movies.data);
-  //const dispatch = useDispatch();
 
   const { movieId } = useParams();
 

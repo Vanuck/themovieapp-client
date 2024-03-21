@@ -144,7 +144,7 @@ export const MainView = () => {
       .then(async (response) => {
         if (response.ok) {
           const data = await response.json();
-          //localStorage.setItem("user", JSON.stringify(data));
+
           dispatch(setUserData(data));
 
           alert("Removed from favorites!");
@@ -157,7 +157,6 @@ export const MainView = () => {
       });
   };
 
-  console.log({ movies, user });
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={handleOnLogOut} />
@@ -232,9 +231,9 @@ export const MainView = () => {
           />
 
           <Route
-            path="/profile/user"
+            path="/profile/:Username"
             element={
-              !user ? (
+              user ? (
                 <ProfileView addFav={addFav} removeFav={removeFav} />
               ) : (
                 <Navigate to="/login" replace />
