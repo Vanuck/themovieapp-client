@@ -3,7 +3,7 @@ import { Form, Button, InputGroup } from "react-bootstrap";
 
 //REDUX
 import { useSelector, useDispatch } from "react-redux";
-import { setFilter } from "../../redux/Slices/movies";
+import { setFilter } from "../../redux/slices/movies";
 
 export default function MovieFilter() {
   const filter = useSelector((state) => state.movies.filter);
