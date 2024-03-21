@@ -1,45 +1,50 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
+import { useDispatch, useSelector } from "react-redux";
 
-export const MovieCard = ({ movie, user, addFav, removeFav }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  useEffect(() => {
-    if (user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, [user]);
+export const MovieCard = ({ movie, addFav, removeFav }) => {
+  //REDUX
+  const user = useSelector((state) => state.user.userData);
+
+  const isFavorite = user.FavoriteMovies.includes(movie._id);
 
   return (
-    <Card className="moviecard h-100">
+    <Card className="moviecard h-100" style={{ cursor: "pointer" }}>
       <br />
-      <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
+      <Link
+        to={`/movies/${encodeURIComponent(movie._id)}`}
+        style={{ cursor: "pointer" }}
+      >
+        <Card.Img variant="top" src={movie.Image} alt={movie.Title} />
 
-      <Card.Body>
-        <Card.Title className="my-1">{movie.Title}</Card.Title>
-        {/* <Card.Text>{movie.Description}</Card.Text> */}
-        <Card.Text>{movie.Director.Name}</Card.Text>
-        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button variant="primary" className="primaryButton">
-            Details
-          </Button>
-        </Link>
-        <Card.Body className="favorite-btns">
-          {!isFavorite ? (
-            <Button className="fav-btn" onClick={() => addFav(movie._id)}>
-              +
-            </Button>
-          ) : (
-            <Button className="fav-btn" onClick={() => removeFav(movie._id)}>
-              -
-            </Button>
-          )}
+        <Card.Body>
+          <Card.Title>{movie.Title}</Card.Title>
+
+          <Card.Text>{movie.Director.Name}</Card.Text>
         </Card.Body>
-      </Card.Body>
+      </Link>
+
+      <div className="favorite-btns ">
+        {!isFavorite ? (
+          <Button
+            variant="bottom"
+            className="fav-btn"
+            onClick={() => addFav(movie._id)}
+          >
+            Add to Favorites
+          </Button>
+        ) : (
+          <Button
+            variant="bottom"
+            className="fav-btn"
+            onClick={() => removeFav(movie._id)}
+          >
+            Remove From Favorites
+          </Button>
+        )}
+      </div>
     </Card>
   );
 };

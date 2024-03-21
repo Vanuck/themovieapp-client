@@ -6,9 +6,16 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Moviereel2 from "../../../img/Moviereel2.jpg";
+import { useDispatch } from "react-redux";
+import { setUserData, setToken } from "../../redux/slices/user";
 import "./login-view.scss";
 
 export const LoginView = ({ onLoggedIn }) => {
+  // REDUX
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,9 +38,8 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          dispatch(setUserData(data.user));
+          dispatch(setToken(data.token));
         } else {
           alert("Invalid User");
         }
@@ -53,6 +59,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 <br />
                 <Card.Title>Please Login</Card.Title>
                 <Form onSubmit={handleSubmit} className="mt-9">
+                  <Image className="Moviereel2" src={Moviereel2} fluid />
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
