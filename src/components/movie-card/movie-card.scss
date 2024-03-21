@@ -1,13 +1,44 @@
-.open-button {
-    padding: 4px 12px 4px 12px;
-    color: whitesmoke;
-    background-color: dodgerblue;
-    border: none;
-    border-radius: 4px;
-  }
-  .my-1 {
-    background-color: #f392f0;
-    border: black ;
-    border-radius: 4px;
-    justify-content: center
+.movieCard {
+  box-shadow: 1em 1em 2em 0.25em #000000;
+  border-radius: 0.5em;
 }
+.movieCard.card {
+  background-color: white;
+}
+.favorite-btns {
+  border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: .85rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-image: linear-gradient(
+      to top left,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0) 
+    ); 
+    box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+ 
+
+  &:active {
+    box-shadow:
+      inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+      inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+  }
+  &:hover {
+    background-color: #0d05f4;
+  }
+}
+
+.fav-btn {
+  width: 100%;
+} 
+
+  
